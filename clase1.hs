@@ -129,7 +129,7 @@ digitoUnidades x = y - 10 * div y 10
 -- 8
 digitoDecenas :: Int -> Int
 digitoDecenas x = digitoUnidades (div (y - digitoUnidades y) 10)
-    where y = absoluto x -- extiende a los reales, innecesario
+                  where y = absoluto x -- extiende a los reales, innecesario -- indentación más fachera (según yo y según uno de los ayudantes)
                   
 digitoDecenas2 :: Int -> Int
 digitoDecenas2 y = digitoUnidades (div (y - digitoUnidades y) 10)
