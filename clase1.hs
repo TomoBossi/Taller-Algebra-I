@@ -107,6 +107,11 @@ algunoEs02 0 _ = True
 algunoEs02 _ 0 = True
 algunoEs02 x y = False
 
+algunoEs03 :: Float -> Float -> Bool
+algunoEs03 0 y = True
+algunoEs03 x 0 = True
+algunoEs03 x y = False -- Otra opción
+
 -- 5
 ambosSon0 :: Float -> Float -> Bool
 ambosSon0 x y = x + y == 0 && algunoEs0 x y
