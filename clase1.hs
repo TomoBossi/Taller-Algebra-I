@@ -69,7 +69,7 @@ cantidadDeSoluciones2 b c | d > 0 = 2
 cantidadDeSoluciones3 b c | e == 1 = 2
                           | e == 0 = 1
                           | otherwise = 0
-                          where e = (signo2 b*2 - 4*c) -- no anda, chequear
+                          where e = signo2 (b*2 - 4*c)
                           
 -- chequear funcionRara
                           
