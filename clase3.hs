@@ -37,5 +37,8 @@ sumaDigitos z | z == 0 = 0
 -- Asumo z en Z
 digitosIguales :: Int -> Bool
 digitosIguales z | az < 10 = True
-                 | otherwise = mod az 10 == mod (div az 10) 10 && digitosIguales (div az 10)
+                 | otherwise = unidad == decena && digitosIguales div10
                    where az = abs z
+                         div10 = div az 10
+                         unidad = mod az 10
+                         decena = mod div10 10
