@@ -5,7 +5,7 @@ esPar n | n == 0 = True
 
 esPar2 :: Int -> Bool
 esPar2 n | n == 0 = True
-         | otherwise = not (esPar (n-1))
+         | otherwise = not (esPar2 (n-1))
 
 fib :: Int -> Int
 fib n | n == 0 = 0
