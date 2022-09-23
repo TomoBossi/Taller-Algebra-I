@@ -54,25 +54,16 @@ g1 i n | n == i = i^n
        | otherwise = i^n + g1 i (n-1)
 
 -- 5
--- Rompe con la especificación implicita en el enunciado
--- Requiere que al llamar a la función siempre se le pase el mismo valor para n y m
-g2Aux :: Int -> Int -> Int
-g2Aux q n | n == 1 = q^n
-          | otherwise = q^n + g2Aux q (n-1)
+g2Aux1 :: Int -> Int -> Int
+g2Aux1 q n | n == 1 = q^n
+          | otherwise = q^n + g2Aux1 q (n-1)
 
-g2 :: Int -> Int -> Int
-g2 n m | n == 1 = g2Aux n m
-       | otherwise = g2Aux n m + g2 (n-1) m
+g2Aux2 :: Int -> Int -> Int
+g2Aux2 n m | n == 1 = g2Aux1 n m
+           | otherwise = g2Aux1 n m + g2Aux2 (n-1) m
 
--- Se come varios términos
--- g2 :: Int -> Int
--- g2 n | n == 0 = 0
---      | otherwise = n^n + n^(n-1) + (n-1)^n + g2 (n-1)
-
--- Se come muchos términos
--- g2 :: Int -> Int
--- g2 n | n == 1 = g1 n n 
---      | otherwise = g1 n n + g2 (n-1)
+g2 :: Int -> Int
+g2 n = g2Aux2 n n
 
 -- 6
 esPar :: Int -> Bool
