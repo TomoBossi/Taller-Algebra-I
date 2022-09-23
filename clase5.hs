@@ -99,7 +99,7 @@ tomaValorMaxAux n1 n2 m max | n1 > n2 = m
 tomaValorMax :: Int -> Int -> Int
 tomaValorMax n1 n2 = tomaValorMaxAux n1 n2 n2 (sumaDivisores n2)
 
--- 11
+-- 12
 tomaValorMinAux :: Int -> Int -> Int -> Int -> Int
 tomaValorMinAux n1 n2 m min | n1 > n2 = m
                             | s < min = tomaValorMinAux n1 (n2-1) n2 s
