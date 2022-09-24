@@ -17,7 +17,7 @@ sonCoprimosHasta n1 n2 m | m == 1 = True
 sonCoprimos :: Integer -> Integer -> Bool
 sonCoprimos n1 n2 = sonCoprimosHasta n1 n2 (minimo n1 n2)
 
--- EJERCICO 2: es2Pseudoprimo
+-- EJERCICIO 2: es2Pseudoprimo
 menorDivisorDesde :: Integer -> Integer -> Integer
 menorDivisorDesde n m | n == m = n
                       | mod n m == 0 = m
