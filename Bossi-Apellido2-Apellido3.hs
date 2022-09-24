@@ -1,10 +1,8 @@
--- TP
-
 -- Bossi Tomás
 -- Apellido Nombre #2
 -- Apellido Nombre #3
 
-
+-- TP 1
 
 -- EJERCICIO 1: sonCoprimos
 minimo :: Integer -> Integer -> Integer
