@@ -3,6 +3,7 @@
 -- Apellido Nombre #3
 
 
+
 -- EJERCICIO 1. sonCoprimos
 minimo :: Integer -> Integer -> Integer
 minimo n1 n2 | n1 < n2 = n1
