@@ -1,10 +1,12 @@
+-- TP
+
 -- Bossi Tomás
 -- Apellido Nombre #2
 -- Apellido Nombre #3
 
 
 
--- EJERCICIO 1. sonCoprimos
+-- EJERCICIO 1: sonCoprimos
 minimo :: Integer -> Integer -> Integer
 minimo n1 n2 | n1 < n2 = n1
              | otherwise = n2
