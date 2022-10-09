@@ -1,6 +1,6 @@
 -- Bossi Tomás
--- Apellido Nombre #2
--- Apellido Nombre #3
+-- Briccola Francina
+-- Campos Ezequiel
 
 -- TP 1
 
