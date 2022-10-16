@@ -44,7 +44,7 @@ cantidad3Pseudoprimos m | m == 1 = 0
 
 -- EJERCICIO 4: kesimo2y3Pseudoprimo
 kesimo2y3PseudoprimoAux :: Integer -> Integer -> Integer -> Integer
-kesimo2y3PseudoprimoAux k c v | k == c = (v-1)
+kesimo2y3PseudoprimoAux k c v | k == c = v-1
                               | es2P && es3P = kesimo2y3PseudoprimoAux k (c+1) (v+1)
                               | otherwise = kesimo2y3PseudoprimoAux k c (v+1)
                                 where es2P = esAPseudoprimo v 2
