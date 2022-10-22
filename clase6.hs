@@ -175,7 +175,7 @@ quitarAuxPM n (x:xs) i c | not (inListPM (x:xs) n) = (x:xs)
                          | otherwise = x:quitarAuxPM n xs i (c+1)
 
 quitarPM :: Int -> [Int] -> [Int]
-quitarPM n xs = quitarAuxPM n xs (index xs n) 0
+quitarPM n xs = quitarAuxPM n xs (indexPM xs n) 0
 
 -- ordenar
 ordenarAux :: [Int] -> Int -> Int -> [Int]
