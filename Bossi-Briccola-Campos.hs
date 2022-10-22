@@ -28,14 +28,14 @@ menorDivisor n | n == 1 = 1
                | otherwise = menorDivisorDesde n 2
 
 esPrimo :: Integer -> Bool
-esPrimo n = n == menorDivisor n
+esPrimo n = n == menorDivisor (n) && n /= 1
 
 es2Pseudoprimo :: Integer -> Bool
-es2Pseudoprimo n = not (esPrimo n) && mod (2^(n-1)-1) n == 0
+es2Pseudoprimo n = not (esPrimo n || n == 1) && mod (2^(n-1)-1) n == 0
 
 -- EJERCICIO 3: cantidad3Pseudoprimos
 esAPseudoprimo :: Integer -> Integer -> Bool
-esAPseudoprimo n a = not (esPrimo n) && mod (a^(n-1)-1) n == 0
+esAPseudoprimo n a = not (esPrimo n || n == 1) && mod (a^(n-1)-1) n == 0
 
 cantidad3Pseudoprimos :: Integer -> Integer
 cantidad3Pseudoprimos m | m == 1 = 0
@@ -43,21 +43,23 @@ cantidad3Pseudoprimos m | m == 1 = 0
                         | otherwise = cantidad3Pseudoprimos (m-1)
 
 -- EJERCICIO 4: kesimo2y3Pseudoprimo
-kesimo2y3PseudoprimoAux :: Integer -> Integer -> Integer -> Integer
-kesimo2y3PseudoprimoAux k c v | k == c = v-1
-                              | es2P && es3P = kesimo2y3PseudoprimoAux k (c+1) (v+1)
-                              | otherwise = kesimo2y3PseudoprimoAux k c (v+1)
-                                where es2P = esAPseudoprimo v 2
-                                      es3P = esAPseudoprimo v 3
+kesimo2y3PseudoprimoAux :: Integer -> Integer -> Integer
+kesimo2y3PseudoprimoAux k v | k == 0 = (v-1)
+                            | es2P && es3P = kesimo2y3PseudoprimoAux (k-1) (v+1)
+                            | otherwise = kesimo2y3PseudoprimoAux k (v+1)
+                              where es2P = esAPseudoprimo v 2
+                                    es3P = esAPseudoprimo v 3
 
 kesimo2y3Pseudoprimo :: Integer -> Integer
-kesimo2y3Pseudoprimo k = kesimo2y3PseudoprimoAux k 0 1
+kesimo2y3Pseudoprimo k = kesimo2y3PseudoprimoAux k 1
 
 -- EJERCICIO 5: esCarmichael
 esCarmichaelHasta :: Integer -> Integer -> Bool
-esCarmichaelHasta n m | m <= 1 = not (esPrimo n)
-                      | sonCoprimos n m = esAPseudoprimo n m && esCarmichaelHasta n (m-1)
+esCarmichaelHasta n m | m == 0 = False
+                      | m == 1 = n /= 2
+                      | sonCoprimos n m = esMP && esCarmichaelHasta n (m-1)
                       | otherwise = esCarmichaelHasta n (m-1)
+                        where esMP = esAPseudoprimo n m
 
 esCarmichael :: Integer -> Bool
 esCarmichael n = esCarmichaelHasta n (n-1)
