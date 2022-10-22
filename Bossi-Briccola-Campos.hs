@@ -49,6 +49,7 @@ proximo2y3Pseudoprimo v | proxEs2P && proxEs3P = (v+1)
                           where proxEs2P = esAPseudoprimo (v+1) 2
                                 proxEs3P = esAPseudoprimo (v+1) 3
 
+kesimo2y3Pseudoprimo :: Integer -> Integer
 kesimo2y3Pseudoprimo k | k == 1 = prox (1)
                        | otherwise = prox (prev)
                          where prev = kesimo2y3Pseudoprimo (k-1)
