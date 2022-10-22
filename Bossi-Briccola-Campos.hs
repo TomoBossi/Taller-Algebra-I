@@ -43,44 +43,16 @@ cantidad3Pseudoprimos m | m == 1 = 0
                         | otherwise = cantidad3Pseudoprimos (m-1)
 
 -- EJERCICIO 4: kesimo2y3Pseudoprimo
-kesimo2y3PseudoprimoAux :: Integer -> Integer -> Integer
-kesimo2y3PseudoprimoAux k v | k == 0 = (v-1)
-                            | es2P && es3P = kesimo2y3PseudoprimoAux (k-1) (v+1)
-                            | otherwise = kesimo2y3PseudoprimoAux k (v+1)
-                              where es2P = esAPseudoprimo v 2
-                                    es3P = esAPseudoprimo v 3
-
-kesimo2y3Pseudoprimo1 :: Integer -> Integer
-kesimo2y3Pseudoprimo1 k = kesimo2y3PseudoprimoAux k 1 
-
 proximo2y3Pseudoprimo :: Integer -> Integer
 proximo2y3Pseudoprimo v | es2P && es3P = (v+1)
                         | otherwise = proximo2y3Pseudoprimo (v+1)
                           where es2P = esAPseudoprimo (v+1) 2
                                 es3P = esAPseudoprimo (v+1) 3
 
-distanciaEntreProximos2y3P :: Integer -> Integer
-distanciaEntreProximos2y3P v = prox (prox v) - prox v
-                               where prox = proximo2y3Pseudoprimo
-
-cantidad2y3Pseudoprimos :: Integer -> Integer
-cantidad2y3Pseudoprimos m | m == 1 = 0
-                          | es2P && es3P = 1 + cantidad2y3Pseudoprimos (m-1)
-                          | otherwise = cantidad2y3Pseudoprimos (m-1)
-                            where es2P = esAPseudoprimo m 2
-                                  es3P = esAPseudoprimo m 3
-
-kesimo2y3Pseudoprimo2Aux :: Integer -> Integer -> Integer
-kesimo2y3Pseudoprimo2Aux k v | k == cantidad2y3Pseudoprimos v = v
-                             | otherwise = kesimo2y3Pseudoprimo2Aux k (v+1)
-
-kesimo2y3Pseudoprimo2 :: Integer -> Integer
-kesimo2y3Pseudoprimo2 k = kesimo2y3Pseudoprimo2Aux k 1 -- Extremadamente lento
-
-kesimo2y3Pseudoprimo3 k | k == 0 = 0
-                        | otherwise = prox (kesimo (k-1))
-                          where kesimo = kesimo2y3Pseudoprimo3
-                                prox = proximo2y3Pseudoprimo
+kesimo2y3Pseudoprimo k | k == 1 = prox (1)
+                       | otherwise = prox (prev)
+                         where prev = kesimo2y3Pseudoprimo (k-1)
+                               prox = proximo2y3Pseudoprimo
                                 
 -- EJERCICIO 5: esCarmichael
 esCarmichaelHasta :: Integer -> Integer -> Bool
