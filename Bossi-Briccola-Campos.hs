@@ -15,16 +15,13 @@ sonCoprimos n1 n2 = sonCoprimosDesde n1 n2 2
 
 -- EJERCICIO 2: es2Pseudoprimo
 menorDivisorDesde :: Integer -> Integer -> Integer
-menorDivisorDesde n m | n == m = n
+menorDivisorDesde n m | n == 1 = 1
+                      | n == m = n
                       | mod n m == 0 = m
                       | otherwise = menorDivisorDesde n (m+1)
 
-menorDivisor :: Integer -> Integer
-menorDivisor n | n == 1 = 1
-               | otherwise = menorDivisorDesde n 2
-
 esPrimo :: Integer -> Bool
-esPrimo n = n == menorDivisor (n) && n /= 1
+esPrimo n = n == menorDivisorDesde n 2 && n /= 1
 
 es2Pseudoprimo :: Integer -> Bool
 es2Pseudoprimo n = not (esPrimo n || n == 1) && mod (2^(n-1)-1) n == 0
@@ -40,7 +37,7 @@ cantidad3Pseudoprimos m | m == 1 = 0
 
 -- EJERCICIO 4: kesimo2y3Pseudoprimo
 proximo2y3Pseudoprimo :: Integer -> Integer
-proximo2y3Pseudoprimo v | proxEs2P && proxEs3P = (v+1)
+proximo2y3Pseudoprimo v | proxEs2P && proxEs3P = v+1
                         | otherwise = proximo2y3Pseudoprimo (v+1)
                           where proxEs2P = esAPseudoprimo (v+1) 2
                                 proxEs3P = esAPseudoprimo (v+1) 3
