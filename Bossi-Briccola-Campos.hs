@@ -44,10 +44,10 @@ cantidad3Pseudoprimos m | m == 1 = 0
 
 -- EJERCICIO 4: kesimo2y3Pseudoprimo
 proximo2y3Pseudoprimo :: Integer -> Integer
-proximo2y3Pseudoprimo v | es2P && es3P = (v+1)
+proximo2y3Pseudoprimo v | proxEs2P && proxEs3P = (v+1)
                         | otherwise = proximo2y3Pseudoprimo (v+1)
-                          where es2P = esAPseudoprimo (v+1) 2
-                                es3P = esAPseudoprimo (v+1) 3
+                          where proxEs2P = esAPseudoprimo (v+1) 2
+                                proxEs3P = esAPseudoprimo (v+1) 3
 
 kesimo2y3Pseudoprimo k | k == 1 = prox (1)
                        | otherwise = prox (prev)
