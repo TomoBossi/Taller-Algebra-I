@@ -5,17 +5,13 @@
 -- TP 1
 
 -- EJERCICIO 1: sonCoprimos
-minimo :: Integer -> Integer -> Integer
-minimo n1 n2 | n1 < n2 = n1
-             | otherwise = n2
-
-sonCoprimosHasta :: Integer -> Integer -> Integer -> Bool
-sonCoprimosHasta n1 n2 m | m == 1 = True
+sonCoprimosDesde :: Integer -> Integer -> Integer -> Bool
+sonCoprimosDesde n1 n2 m | m > n1 || m > n2 = True
                          | mod n1 m == 0 && mod n2 m == 0 = False
-                         | otherwise = sonCoprimosHasta n1 n2 (m-1)
+                         | otherwise = sonCoprimosDesde n1 n2 (m+1)
 
 sonCoprimos :: Integer -> Integer -> Bool
-sonCoprimos n1 n2 = sonCoprimosHasta n1 n2 (minimo n1 n2)
+sonCoprimos n1 n2 = sonCoprimosDesde n1 n2 2
 
 -- EJERCICIO 2: es2Pseudoprimo
 menorDivisorDesde :: Integer -> Integer -> Integer
