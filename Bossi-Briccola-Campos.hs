@@ -21,7 +21,7 @@ menorDivisorDesde n m | n == 1 = 1
                       | otherwise = menorDivisorDesde n (m+1)
 
 esPrimo :: Integer -> Bool
-esPrimo n = n == menorDivisorDesde n 2 && n /= 1
+esPrimo n = n /= 1 && n == menorDivisorDesde n 2
 
 es2Pseudoprimo :: Integer -> Bool
 es2Pseudoprimo n = not (esPrimo n || n == 1) && mod (2^(n-1)-1) n == 0
