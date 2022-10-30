@@ -77,7 +77,7 @@ pasarACartesianas r a = (r*cos a, r*sin a)
 
 -- 2.5
 raizCuadrada :: Complejo -> (Complejo, Complejo)
-raizCuadrada z = (w, (-re w, -im w))
+raizCuadrada z = (w, neg w)
     where w = (r, i)
           r = sqrt (abs ((re z + modulo z)/2))
           i = s*sqrt (abs ((modulo z - re z)/2))
