@@ -1,6 +1,6 @@
 -- Bossi Tomás tomasbossi97@gmail.com
--- Briccola Francina franbriccola2309@gmail.com
--- Campos Ezequiel zecu95@gmail.com
+-- 
+-- 
 
 
 type Complejo = (Float,Float)
