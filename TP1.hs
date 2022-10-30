@@ -1,6 +1,6 @@
 -- Bossi Tomás
--- Briccola Francina
--- Campos Ezequiel
+-- 
+-- 
 
 -- TP 1
 
