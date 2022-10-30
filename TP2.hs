@@ -2,9 +2,9 @@
 -- 
 -- 
 
+-- TP 2
 
 type Complejo = (Float,Float)
-
 
 -- 1.1
 re :: Complejo -> Float
