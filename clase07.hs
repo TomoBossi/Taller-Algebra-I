@@ -12,6 +12,3 @@ incluido (x:xs) b = elem x b && incluido xs b
 
 iguales :: Set Int -> Set Int -> Bool
 iguales a b = incluido a b && incluido b a
-
--- Partes
-
