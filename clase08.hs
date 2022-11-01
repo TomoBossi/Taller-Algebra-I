@@ -76,7 +76,7 @@ subconjuntos k n = filtrarRepe (listOrd k n)
                                                   incluido [] b = True
                                                   incluido (x:xs) b = elem x b && incluido xs b
 
--- 4 -- podría haberse logrado filtrando var [0,1] 6 de manera similar a -- 5, cambiando solo c1 > c0 por c1 == c0
+-- 4
 sucesion6 :: [[Int]]
 sucesion6 = sucesionesBalanceadas 6
     where sucesionesBalanceadas :: Int -> [[Int]]
@@ -88,20 +88,17 @@ sucesion6 = sucesionesBalanceadas 6
 sucesion5masUnos :: [[Int]]
 sucesion5masUnos = sucesionesConMasUnos 5
     where sucesionesConMasUnos :: Int -> [[Int]]
-
           --sucesionesConMasUnos 0 = [[]]
           --sucesionesConMasUnos l = agregarSiC1MayorIgualC0 (sucesionesConMasUnos (l-1))
               -- where agregarSiC1MayorIgualC0 :: [[Int]] -> [[Int]]
               --       agregarSiC1MayorIgualC0 [] = []
               --       agregarSiC1MayorIgualC0 (x:xs) | c1 > c0 + 1 = [0:x] ++ [1:x] ++ agregarSiC1MayorIgualC0 xs
               --                                      | otherwise = [1:x] ++ agregarSiC1MayorIgualC0 xs
-
           sucesionesConMasUnos l = filtrarMasUnos (var [0,1] l)
               where filtrarMasUnos :: [[Int]] -> [[Int]]
                     filtrarMasUnos [] = []
                     filtrarMasUnos (x:xs) | c1 > c0 = x:filtrarMasUnos xs
                                           | otherwise = filtrarMasUnos xs
-
                         where c1 = contarE 1 x
                               c0 = contarE 0 x
                               contarE :: Int -> [Int] -> Int
