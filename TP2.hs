@@ -76,7 +76,7 @@ pasarACartesianas :: Float -> Float -> Complejo
 pasarACartesianas r a = (r*cos a, r*sin a)
 
 -- 2.5
-raizCuadrada :: Complejo -> (Complejo, Complejo)
+raizCuadrada :: Complejo -> (Complejo,Complejo)
 raizCuadrada z = (w, neg w)
     where w = (r, i)
           r = sqrt (abs ((re z + modulo z)/2))
@@ -85,7 +85,7 @@ raizCuadrada z = (w, neg w)
             | otherwise = im z/abs (im z) -- signo
 
 -- 2.6
-raicesCuadraticaCompleja :: Complejo -> Complejo -> Complejo -> (Complejo, Complejo)
+raicesCuadraticaCompleja :: Complejo -> Complejo -> Complejo -> (Complejo,Complejo)
 raicesCuadraticaCompleja a b c = (w1, w2)
     where w1 = cociente (suma  (neg b) sd) (producto (2, 0) a)
           w2 = cociente (resta (neg b) sd) (producto (2, 0) a)
