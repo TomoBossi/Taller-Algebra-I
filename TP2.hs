@@ -110,5 +110,5 @@ raicesNEsimas n = reverso (raicesNEsimasDesde n n)
 -- 3.2
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas n [] tol = True
-sonRaicesNEsimas n rs tol = error < tol && sonRaicesNEsimas n (tail rs) tol
-    where error = modulo (resta (potencia (head rs) n) (1,0))
+sonRaicesNEsimas n (r:rs) tol = error < tol && sonRaicesNEsimas n rs tol
+    where error = modulo (resta (potencia r n) (1,0))
