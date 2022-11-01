@@ -1,20 +1,3 @@
--- Tipo [(Int, Int)] (diapo 21)
-
--- [1,0..(-100)] (lista decreciente de 1 a -100 inclusive, diapo 24)
--- [(-19),(-15)..20] (lista creciente entre -20 y 20 congruentes con 1 (4), diapo 24)
-
--- sumatoria :: [Int] -> Int
--- sumatoria l | l == [] = 0
---             | otherwise = head l + sumatoria (tail l)
-
--- longitud :: [Int] -> Int -- No pude con [a], requiere especificar trait Eq
--- longitud l | l == [] = 0
---            | otherwise = 1 + longitud (tail l)
-
--- pertenece :: Int -> [Int] -> Bool
--- pertenece v l | l == [] = False
---               | otherwise = v == head l || pertenece v (tail l)
-
 sumatoria :: [Int] -> Int
 sumatoria [] = 0
 sumatoria (x:xs) = x + sumatoria xs
