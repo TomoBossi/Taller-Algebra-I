@@ -49,8 +49,8 @@ potencia z k = producto z (potencia z (k-1))
 
 -- 1.9
 raicesCuadratica :: Float -> Float -> Float -> (Complejo,Complejo)
-raicesCuadratica a b c | d >= 0 = ((r + sd/(2*a), 0), (r - sd/(2*a), 0)) -- raices reales
-                       | otherwise = ((r, sd/(2*a)), (r, -sd/(2*a)))     -- raices complejas
+raicesCuadratica a b c | d >= 0 = ((r + sd/(2*a), 0), (r - sd/(2*a), 0)) -- raíces reales
+                       | otherwise = ((r, sd/(2*a)), (r, -sd/(2*a)))     -- races complejas
     where d = b^2 - 4*a*c -- discriminante
           sd = sqrt (abs d) -- raíz del discriminante
           r = -b/(2*a)
