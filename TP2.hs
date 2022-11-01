@@ -1,4 +1,4 @@
--- Bossi Tomás tomasbossi97@gmail.com
+-- 
 -- 
 -- 
 
@@ -48,7 +48,7 @@ potencia z 1 = z
 potencia z k = producto z (potencia z (k-1))
 
 -- 1.9
-raicesCuadratica :: Float -> Float -> Float -> (Complejo, Complejo)
+raicesCuadratica :: Float -> Float -> Float -> (Complejo,Complejo)
 raicesCuadratica a b c | d >= 0 = ((r + sd/(2*a), 0), (r - sd/(2*a), 0)) -- raices reales
                        | otherwise = ((r, sd/(2*a)), (r, -sd/(2*a)))     -- raices complejas
     where d = b^2 - 4*a*c -- discriminante
@@ -110,5 +110,5 @@ raicesNEsimas n = reverso (raicesNEsimasDesde n n)
 -- 3.2
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas n [] tol = True
-sonRaicesNEsimas n (r:rs) tol = error < tol && sonRaicesNEsimas n rs tol
-    where error = modulo (resta (potencia r n) (1,0))
+sonRaicesNEsimas n (w:ws) tol = error < tol && sonRaicesNEsimas n ws tol
+    where error = modulo (resta (potencia w n) (1,0))
