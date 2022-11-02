@@ -89,7 +89,7 @@ raicesCuadraticaCompleja :: Complejo -> Complejo -> Complejo -> (Complejo,Comple
 raicesCuadraticaCompleja a b c = (w1, w2)
     where w1 = cociente (suma  (neg b) sd) (producto (2, 0) a)
           w2 = cociente (resta (neg b) sd) (producto (2, 0) a)
-          sd = fst (raizCuadrada (resta (potencia b 2) ac4)) -- raíz del discriminante
+          sd = fst (raizCuadrada (resta (potencia b 2) ac4)) -- raíz del "discriminante" w
           ac4 = producto (4, 0) (producto a c) -- 4ac
 
 -- 3.1
