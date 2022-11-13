@@ -61,9 +61,12 @@ distancia (a1, b1) (a2, b2) = modulo (a1 - a2, b1 - b2)
 
 -- 2.3
 argumento :: Complejo -> Float
-argumento (a, 0) = (pi - pi*(a/(abs a)))/2
 argumento (0, b) = pi/2 + (pi - pi*(b/(abs b)))/2
-argumento (a, b) = atan (b/a) + (pi - pi*(a*b)/(abs (a*b)))/2 + (pi - pi*b/(abs b))/2
+argumento (a, b)
+  | a < 0 = pi + t
+  | b < 0 = 2*pi + t
+  | otherwise = t
+  where t = atan (b/a)
 
 -- 2.4
 pasarACartesianas :: Float -> Float -> Complejo
