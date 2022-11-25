@@ -46,7 +46,7 @@ potencia z k = producto z (potencia z (k - 1))
 raicesCuadratica :: Float -> Float -> Float -> (Complejo,Complejo)
 raicesCuadratica a b c
   | disc < 0 = (w, conjugado w)
-  | otherwise = (((fst w + snd w)/(2*a), 0), ((fst w - snd w)/(2*a), 0))
+  | otherwise = (((fst w + snd w), 0), ((fst w - snd w), 0))
   where
     disc = b**2 - 4*a*c
     w = prodPorEscalar (1/(2*a)) (-b, (sqrt (abs disc)))
@@ -100,3 +100,4 @@ raicesNEsimas n = gn n 0
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas _ [] _ = True
 sonRaicesNEsimas n (z:zs) tol = modulo (suma (potencia z n) (-1, 0)) < tol && sonRaicesNEsimas n zs tol
+
