@@ -46,7 +46,7 @@ potencia z k = producto z (potencia z (k - 1))
 raicesCuadratica :: Float -> Float -> Float -> (Complejo,Complejo)
 raicesCuadratica a b c
   | disc < 0 = (w, conjugado w)
-  | otherwise = (((fst w + snd w), 0), ((fst w - snd w), 0))
+  | otherwise = (((re w + im w), 0), ((re w - im w), 0))
   where
     disc = b**2 - 4*a*c
     w = prodPorEscalar (1/(2*a)) (-b, (sqrt (abs disc)))
@@ -61,7 +61,6 @@ distancia (a1, b1) (a2, b2) = modulo (a1 - a2, b1 - b2)
 
 -- 2.3
 argumento :: Complejo -> Float
-argumento (0, b) = pi/2 + (pi - pi*(b/(abs b)))/2
 argumento (a, b)
   | a < 0 = pi + t
   | b < 0 = 2*pi + t
@@ -74,6 +73,7 @@ pasarACartesianas r t = (r*cos t, r*sin t)
 
 -- 2.5
 raizCuadrada :: Complejo -> (Complejo,Complejo)
+raizCuadrada (0, 0) = ((0, 0), (0, 0))
 raizCuadrada z = (w, prodPorEscalar (-1) w)
   where 
     t = argumento z
@@ -100,4 +100,3 @@ raicesNEsimas n = gn n 0
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas _ [] _ = True
 sonRaicesNEsimas n (z:zs) tol = modulo (suma (potencia z n) (-1, 0)) < tol && sonRaicesNEsimas n zs tol
-
