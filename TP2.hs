@@ -87,16 +87,17 @@ raicesCuadraticaCompleja a b c = (producto (suma (prodPorEscalar (-1) b) (fst w)
 
 -- 3.1
 raicesNEsimas :: Integer -> [Complejo]
-raicesNEsimas n = gn n 0
+raicesNEsimas n = gn (fromIntegral n) 0
   where
-    gn :: Integer -> Integer -> [Complejo]
+    gn :: Float -> Float -> [Complejo]
     gn n k
       | k >= n = []
       | otherwise = (cos t, sin t) : gn n (k + 1)
       where
-        t = (2*(fromIntegral k)*pi/(fromIntegral n))
+        t = (2*k*pi/n)
 
 -- 3.2
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas _ [] _ = True
 sonRaicesNEsimas n (z:zs) tol = modulo (suma (potencia z n) (-1, 0)) < tol && sonRaicesNEsimas n zs tol
+
