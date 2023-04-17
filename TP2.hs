@@ -1,7 +1,3 @@
--- Bossi Tomás tomasbossi97@gmail.com
--- González Gastón gasti.g.gg@gmail.com
--- Muñoz Sandra sm9654136@gmail.com
-
 type Complejo = (Float,Float)
 
 -- Auxiliares
