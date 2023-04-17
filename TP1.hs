@@ -1,9 +1,3 @@
--- 
--- 
--- 
-
--- TP 1
-
 -- EJERCICIO 1: sonCoprimos
 sonCoprimosDesde :: Integer -> Integer -> Integer -> Bool
 sonCoprimosDesde n1 n2 m | m > n1 || m > n2 = True
