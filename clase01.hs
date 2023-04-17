@@ -1,13 +1,11 @@
--- clase 1
-
 f x y = x * x + y * y -- f 2 3 = 13
 g x y z = x + y + z * z -- g 2 3 4 = 21
 h x y z = f x y + g x y z -- h 2 3 4 = 34
 
 -- funcioncitas
-doble x = 2 * x -- doble -1 tira error, doble (-1) ok (?)
+doble x = 2 * x
 suma x y = x + y
-normaVectorial x1 x2 = sqrt(x1**2 + x2**2) -- se usa camelCase!!! :D
+normaVectorial x1 x2 = sqrt(x1**2 + x2**2)
 funcionConstante8 x = 8
 
 -- funcioncitas con condicionales
@@ -43,13 +41,13 @@ f6 n | n == 0 = 1
      | n /= 0 = 0
 -- puede reescribirse como
 f7 0 = 1
-f7 n = 0 -- ... si uso f me tira errores, por qué f7 no tira error por intento de redeclaración?
--- f7 2 = 2 -- tira warning de redundancia (porque por orden de "guardas", f7 2 = 0), pero no tira error. O sea que error redeclaración depende del orden de instrucciones y de si hay algo declarado en medio
+f7 n = 0
+-- f7 2 = 2 -- tira warning de redundancia (porque por orden de "guardas", f7 2 = 0), pero no tira error
 
 f8 x | x<9 = 0
 f8 x | x>3 = 1
 
--- f7 2 = 2 -- acá tirar error por redeclaración de f7
+-- f7 2 = 2 -- acá tira error por redeclaración de f7
 
 -- signo con pattern matching
 signo2 0 = 0
@@ -71,12 +69,9 @@ cantidadDeSoluciones3 b c | e == 1 = 2
                           | otherwise = 0
                           where e = signo2 (b*2 - 4*c)
                           
--- chequear funcionRara
-                          
 -- logica con &&, ||, not
 
--- se puede especificar tipo de dato, dominio y codominio de fn
--- (SIGNATURA//FIRMA)
+-- se puede especificar tipo de dato de inputs y output de de fn
 -- ej:
 maximo2 :: Int -> Int -> Int
 maximo2 x y | x >= y = x
@@ -128,15 +123,15 @@ esMultiploDe x y = mod x y == 0 -- esMultiploDe (-10) 5 = True
 digitoUnidades :: Int -> Int
 digitoUnidades x = y - 10 * div y 10
     where y = absoluto x -- extiende a los reales, innecesario
--- con el where empezando desde margen, problema de indentación... sad :(
+-- con el where empezando desde margen, problema de indentación
 -- igual, no hace falta el where porque se aclara que son solo naturales
 
 -- 8
 digitoDecenas :: Int -> Int
 digitoDecenas x = digitoUnidades (div (y - digitoUnidades y) 10)
-                  where y = absoluto x -- extiende a los reales, innecesario -- indentación más fachera (según yo y según uno de los ayudantes)
+                  where y = absoluto x -- extiende a los reales, innecesario -- otra posible indentación
                   
 digitoDecenas2 :: Int -> Int
 digitoDecenas2 y = digitoUnidades (div (y - digitoUnidades y) 10)
     where y = absoluto y -- extiende a los reales, innecesario
--- No puedo sobreescribir a la variable y así :( curiosamente, entra en loop infinito. La ejecución se puede cortar con ctrl+C as per usual
+-- No puede sobreescribirse a la variable y así
