@@ -27,7 +27,7 @@ conjugado (a, b) = (a, -b)
 -- 1.6
 inverso :: Complejo -> Complejo
 inverso (a, b) = (a/m, -b/m)
-               where m = a**2 + b**2
+  where m = a**2 + b**2
 
 -- 1.7
 cociente :: Complejo -> Complejo -> Complejo
@@ -78,8 +78,7 @@ raizCuadrada z = (w, prodPorEscalar (-1) w)
 -- 2.6
 raicesCuadraticaCompleja :: Complejo -> Complejo -> Complejo -> (Complejo,Complejo)
 raicesCuadraticaCompleja a b c = (producto (suma (prodPorEscalar (-1) b) (fst w)) (inverso (prodPorEscalar 2 a)), producto (suma (prodPorEscalar (-1) b) (snd w)) (inverso (prodPorEscalar 2 a)))
-  where
-    w = raizCuadrada (suma (potencia b 2) (prodPorEscalar (-4) (producto a c)))
+  where w = raizCuadrada (suma (potencia b 2) (prodPorEscalar (-4) (producto a c)))
 
 -- 3.1
 raicesNEsimas :: Integer -> [Complejo]
@@ -89,11 +88,9 @@ raicesNEsimas n = gn (fromIntegral n) 0
     gn n k
       | k >= n = []
       | otherwise = (cos t, sin t) : gn n (k + 1)
-      where
-        t = (2*k*pi/n)
+      where t = (2*k*pi/n)
 
 -- 3.2
 sonRaicesNEsimas :: Integer -> [Complejo] -> Float -> Bool
 sonRaicesNEsimas _ [] _ = True
 sonRaicesNEsimas n (z:zs) tol = modulo (suma (potencia z n) (-1, 0)) < tol && sonRaicesNEsimas n zs tol
-

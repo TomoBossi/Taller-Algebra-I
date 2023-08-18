@@ -20,10 +20,11 @@ sumaTerna (vx, vy, vz) = vx + vy + vz
 
 -- 6 Asumo que quieren que indexemos desde 1
 posicPrimerPar :: (Int, Int, Int) -> Int
-posicPrimerPar (vx, vy, vz) | mod vx 2 == 0 = 1
-                            | mod vy 2 == 0 = 2
-                            | mod vz 2 == 0 = 3
-                            | otherwise = 4
+posicPrimerPar (vx, vy, vz) 
+  | mod vx 2 == 0 = 1
+  | mod vy 2 == 0 = 2
+  | mod vz 2 == 0 = 3
+  | otherwise = 4
 
 -- 7
 crearPar :: a -> b -> (a, b)

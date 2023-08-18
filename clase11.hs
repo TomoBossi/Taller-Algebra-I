@@ -4,8 +4,9 @@ type Monomio = (Float, Int) -- El monomio aX^n se representa con (a, n). a nunca
 
 limpiar :: [Float] -> Polinomio
 limpiar [] = []
-limpiar (c:cs) | c == 0 = limpiar cs
-               | otherwise = (c:cs)
+limpiar (c:cs) 
+  | c == 0 = limpiar cs
+  | otherwise = (c:cs)
 
 grado :: Polinomio -> Int
 -- grado [_] = 0
@@ -18,20 +19,23 @@ evaluar (c:cs) x = c*x^(grado (c:cs)) + evaluar cs x
 
 suma :: Polinomio -> Polinomio -> Polinomio
 suma f g = limpiar (sumaAux f g)
-    where sumaAux :: Polinomio -> Polinomio -> Polinomio
-          sumaAux f [] = f
-          sumaAux [] g = g
-          sumaAux f g = (sumaAux inif inig) ++ [lf + lg]
-              where inif = init f
-                    inig = init g
-                    lf = last f
-                    lg = last g
+  where 
+    sumaAux :: Polinomio -> Polinomio -> Polinomio
+    sumaAux f [] = f
+    sumaAux [] g = g
+    sumaAux f g = (sumaAux inif inig) ++ [lf + lg]
+      where 
+        inif = init f
+        inig = init g
+        lf = last f
+        lg = last g
 
 productoPorEscalar :: Float -> Polinomio -> Polinomio
 productoPorEscalar k f = limpiar (productoPorEscalarAux k f)
-    where productoPorEscalarAux :: Float -> Polinomio -> Polinomio
-          productoPorEscalarAux _ [] = []
-          productoPorEscalarAux k (c:cs) = (k*c):productoPorEscalarAux k cs
+  where 
+    productoPorEscalarAux :: Float -> Polinomio -> Polinomio
+    productoPorEscalarAux _ [] = []
+    productoPorEscalarAux k (c:cs) = (k*c):productoPorEscalarAux k cs
 
 resta :: Polinomio -> Polinomio -> Polinomio
 resta f g = suma f (productoPorEscalar (-1) g)
@@ -66,30 +70,36 @@ derivadaNEsima f n = derivadaNEsima (derivada f) (n-1)
 
 primerCociente :: Polinomio -> Polinomio -> Monomio
 primerCociente f d = (cpf/cpd, grf-grd)
-    where grf = grado f
-          grd = grado d
-          cpf = head f
-          cpd = head d
+  where 
+    grf = grado f
+    grd = grado d
+    cpf = head f
+    cpd = head d
 
 primerResto :: Polinomio -> Polinomio -> Polinomio
 primerResto f d = resta f (productoPorMonomio q d)
-    where q = primerCociente f d
+  where q = primerCociente f d
 
 division :: Polinomio -> Polinomio -> (Polinomio, Polinomio)
 division p q = divisionAux p q []
-    where divisionAux :: Polinomio -> Polinomio -> Polinomio -> (Polinomio, Polinomio)
-          divisionAux p q res | grr >= grq = divisionAux r q (res ++ [fst c])
-                              | otherwise = (res ++ [fst c], r)
-              where c = primerCociente p q
-                    r = primerResto p q
-                    grr = grado r
-                    grq = grado q
+  where 
+    divisionAux :: Polinomio -> Polinomio -> Polinomio -> (Polinomio, Polinomio)
+    divisionAux p q res 
+      | grr >= grq = divisionAux r q (res ++ [fst c])
+      | otherwise = (res ++ [fst c], r)
+      where 
+        c = primerCociente p q
+        r = primerResto p q
+        grr = grado r
+        grq = grado q
 
 divide :: Polinomio -> Polinomio -> Bool -- ¿q divide a p?
-divide p q | grp >= grq = snd (division p q) == []
-           | otherwise = False
-    where grp = grado p
-          grq = grado q
+divide p q 
+  | grp >= grq = snd (division p q) == []
+  | otherwise = False
+  where 
+    grp = grado p
+    grq = grado q
 
 potencia :: Int -> Polinomio -> Polinomio
 potencia 0 _ = [1]
@@ -101,9 +111,11 @@ mcdP f g = mcdP g (snd (division f g))
 
 multiplicidad :: Float -> Polinomio -> Int
 multiplicidad x p = multiplicidadAux x p 0
-    where multiplicidadAux :: Float -> Polinomio -> Int -> Int
-          multiplicidadAux x p m | divide p (potencia m [1, -x]) = multiplicidadAux x p (m+1)
-                                 | otherwise = m-1
+  where 
+    multiplicidadAux :: Float -> Polinomio -> Int -> Int
+    multiplicidadAux x p m 
+      | divide p (potencia m [1, -x]) = multiplicidadAux x p (m+1)
+      | otherwise = m-1
 
 raicesMultiples :: Polinomio -> Bool
 raicesMultiples p = mcdP p (derivada p) /= [1]
